@@ -12,38 +12,46 @@ public class SceneController : MonoBehaviour
 
 	}
 
-	public void OnStartButtonClick ()
+    // メインシーンに遷移
+	public void LoadScene_Main ()
 	{
 		SceneManager.LoadScene ("Main");
 	}
 
-	public void OnRedButtonClick ()
+    // 赤決定シーンに遷移
+	public void LoadScene_Decision_red ()
 	{
 		SceneManager.LoadScene ("Decision_red");
 	}
 
-	public void OnBlueButtonClick(){
+    // 青決定シーンに遷移
+	public void LoadScene_Decision_blue(){
 		SceneManager.LoadScene ("Decision_blue");
 	}
 
-	public void OnGreenButtonClick(){
+    // 緑決定シーンに遷移
+	public void LoadScene_Decision_green(){
 		SceneManager.LoadScene ("Decision_green");
 	}
 
-	public void OnStartRedClick ()
+    // 赤プレイシーンに遷移
+	public void LoadScene_PlayRed ()
 	{
 		SceneManager.LoadScene ("PlayRed");
 	}
 
-	public void OnStartBlueClick(){
+    // 青プレイシーンに遷移
+	public void LoadScene_PlayBlue(){
 		SceneManager.LoadScene ("PlayBlue");
 	}
 
-	public void OnStartGreenClick(){
+    // 緑プレイシーンに遷移
+	public void LoadScene_PlayGreen(){
 		SceneManager.LoadScene ("PlayGreen");
 	}
 
-	public void OnBackButtonClick(){
+    // リザルトシーンに遷移
+	public void LoadScene_Result(){
 		SceneManager.LoadScene ("Result");
 	}
 

@@ -20,12 +20,11 @@ public class Destroy_B : MonoBehaviour
 		}
 	}
 
+    // リザルトシーンに遷移
 	void ReturnToResult ()
 	{
 		SceneManager.LoadScene ("Result");
 		enabled = true;
-
-		//player.gameObject.SetActive (true);
 	}
 
 	// Use this for initialization
