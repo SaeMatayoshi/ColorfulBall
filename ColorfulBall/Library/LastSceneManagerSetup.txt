@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/OriginalData/Scene/Decision_red.unity
+- path: Assets/Scene/PlayRed.unity
   isLoaded: 1
   isActive: 1
