@@ -23,6 +23,9 @@ public class Player : MonoBehaviour {
     float speedZ = 15;
     float speedX = 20;
 
+    // 同じ色のボールにあたった回数
+    int ballTouch = 0;
+
 
 	// Use this for initialization
 	void Start ()
@@ -41,6 +44,7 @@ public class Player : MonoBehaviour {
     // ボールの動き
     void BallMove()
     {
+        float acceleratedZ = ballMove.z + (accelerationZ * Time.deltaTime);
         ballMove.z = Mathf.Clamp(accelerationZ, 0, speedZ);
 
         float ratioX = (targetLane * laneWidth - transform.position.x) / laneWidth;
@@ -50,6 +54,17 @@ public class Player : MonoBehaviour {
 
         Vector3 globalDirection = transform.TransformDirection(ballMove);
         CharaCon.Move(globalDirection * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "OBall")
+        {
+            if (ballTouch < 20)
+                speedZ += 2;
+            ballTouch++;
+            Debug.Log(speedZ);
+        }
     }
 
     // プレイヤーがキーを押したときの処理

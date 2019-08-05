@@ -72,7 +72,7 @@ public class PlayerR : MonoBehaviour {
 
 		}
 
-		Debug.Log (Count);
+		//Debug.Log (Count);
 		//Debug.Log (speedZ);
 		//Debug.Log (ReScore);
 	}

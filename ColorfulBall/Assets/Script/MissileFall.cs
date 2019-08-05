@@ -52,7 +52,7 @@ public class MissileFall : MonoBehaviour {
 			if (count <= 20) {
 				speedZ = 10 * count + distan;
 
-				Debug.Log (count);
+				//Debug.Log (count);
 			}
 
 			Instan = new Vector3 (x, y, z + speedZ);
