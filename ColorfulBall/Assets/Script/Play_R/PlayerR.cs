@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerR : MonoBehaviour {
-
+    // レーンの最大、最小
 	const int MinLane = -1;
 	const int MaxLane = 1;
+    // レーンからレーンまで移動する幅
 	const float LaneWidth = 2.0f;
 
 	CharacterController controller;
 
 	public Vector3 moveDirection = Vector3.zero;
+    // 今いるレーン
 	int targetLane;
 
 	public float gravity = 20;
@@ -19,18 +21,11 @@ public class PlayerR : MonoBehaviour {
 	public float accelerationZ = 10;
 	public int Count = 0;
 	public int ReScore = 0;
-	//public GameController gamecontroller;
-
-	//public float acceleratedZ;
-	//public Vector3 globalDirection;
-
 
 	// Use this for initialization
 	void Start ()
 	{
 		controller = GetComponent<CharacterController> ();
-
-
 	}
 
 	// Update is called once per frame
@@ -52,37 +47,31 @@ public class PlayerR : MonoBehaviour {
 
 		Vector3 globalDirection = transform.TransformDirection (moveDirection);
 		controller.Move (globalDirection * Time.deltaTime);
-
-		//int ReScore = GameController.score;
 	}
 
 	public void OnTriggerEnter (Collider other)
 	{
-
-
+        // 同じ色のボールに当たったら
 		if (other.gameObject.tag == "OBall") {
 
 			ReScore += 300;
 
-			//GameController.score += 100;
+            // スピードが上がりすぎないようにする処理
 			if (Count < 40) {
 				speedZ +=3;
 			}
 			Count++;
-
 		}
-
-		//Debug.Log (Count);
-		//Debug.Log (speedZ);
-		//Debug.Log (ReScore);
 	}
 
+    // 左を押した時
 	public void MoveToLeft ()
 	{
 		if (controller.isGrounded && targetLane > MinLane)
 			targetLane--;
 	}
 
+    // 右を押した時
 	public void MoveToRight ()
 	{
 		if (controller.isGrounded && targetLane < MaxLane)

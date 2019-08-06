@@ -17,6 +17,7 @@ public class MissileFall : MonoBehaviour {
 	//public float z;
 	public float speedZ = 10;
 	public float distan = 50;
+    // ミサイルが落ちてきた数
 	private int count = 0;
 
 
@@ -25,19 +26,19 @@ public class MissileFall : MonoBehaviour {
 	{
 		StartCoroutine ("Fall");
 
-	}
-
-	void Update ()
-	{
-		if (SceneManager.GetActiveScene ().name == "PlayRed") {
-			count = playerR.Count;
-		} else if (SceneManager.GetActiveScene ().name == "PlayBlue") {
-			count = playerB.Count;
-		} else if (SceneManager.GetActiveScene ().name == "PlayGreen") {
-			count = playerG.Count;
-		}
-	}
-
+        if (SceneManager.GetActiveScene().name == "PlayRed")
+        {
+            count = playerR.Count;
+        }
+        else if (SceneManager.GetActiveScene().name == "PlayBlue")
+        {
+            count = playerB.Count;
+        }
+        else if (SceneManager.GetActiveScene().name == "PlayGreen")
+        {
+            count = playerG.Count;
+        }
+    }
 
 	IEnumerator Fall ()
 	{
@@ -49,10 +50,9 @@ public class MissileFall : MonoBehaviour {
 			float y = 50;
 			float z = player.transform.position.z;
 
+            // プレイヤーの速さにあわせる
 			if (count <= 20) {
 				speedZ = 10 * count + distan;
-
-				//Debug.Log (count);
 			}
 
 			Instan = new Vector3 (x, y, z + speedZ);
@@ -63,17 +63,13 @@ public class MissileFall : MonoBehaviour {
 				Quaternion.identity
 			);
 
-			yield return new
-				WaitForSeconds (span);
+			yield return new WaitForSeconds (span);
 
 			Instan = Vector3.zero;
-
+            // 変数の初期化
 			if (count <= 20) {
 				speedZ = 10;
 			}
-			//speedZ--;
-
-			//Debug.Log (Instan);
 
 			if (player == false) {
 				enabled = false;
@@ -93,7 +89,4 @@ public class MissileFall : MonoBehaviour {
 			speedZ += 20 * count;
 		}
 	}
-
-	// Update is called once per frame
-
 }
